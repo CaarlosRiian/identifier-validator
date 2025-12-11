@@ -30,3 +30,21 @@ def test_identifier_only_digits():
 def test_identifier_mixed_letters_digits():
     id = Identifier()
     assert id.validate_identifier("a1b2c3") == True
+
+def test_valid_s_method():
+    id = Identifier()
+    assert id.valid_s("a") is True
+    assert id.valid_s("Z") is True
+    assert id.valid_s("1") is False
+    assert id.valid_s("_") is False
+
+def test_valid_f_method():
+    id = Identifier()
+    assert id.valid_f("a") is True
+    assert id.valid_f("9") is True
+    assert id.valid_f("_") is False
+
+def test_identifier_too_long_minimal_case():
+    id = Identifier()
+    assert id.validate_identifier("aaaaaaa") is False  
+
